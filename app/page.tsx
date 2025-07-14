@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChat } from "@ai-sdk/react";
 import { motion } from "framer-motion";
-import { ArrowDownCircleIcon, MessageCircle, Send } from "lucide-react";
+import { ArrowDownCircleIcon, LoaderCircle, MessageCircle, Send } from "lucide-react";
 import React, { useState } from "react";
 
 const Home = () => {
@@ -62,6 +62,7 @@ const Home = () => {
                     ))}
                   </div>
                 )}
+                {error && (<div>caught error</div>)}
               </ScrollArea>
             </CardContent>
             <CardFooter>
@@ -75,10 +76,10 @@ const Home = () => {
                 <Button
                   type="submit"
                   className="size-9"
-                  disabled={isLoading}
+                  onClick={()=>{if(isLoading){stop()}}}
                   size="icon"
                 >
-                  <Send />
+                  {!isLoading? (<Send/>) : (<LoaderCircle/>)}
                 </Button>
               </form>
             </CardFooter>
