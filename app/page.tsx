@@ -25,7 +25,7 @@ const Home = () => {
     isLoading,
     stop,
     error,
-  } = useChat({ api: "/api/gemini" });
+  } = useChat({ api: "api/gemini" });
 
   return (
     <div className="md:px-[100px] lg:px-[150px] bg-black h-[100vh] text-white px-15 py-5">
@@ -58,11 +58,17 @@ const Home = () => {
                 ) : (
                   <div>
                     {messages.map((e, i) => (
-                      <div key={i}>{i}</div>
+                      <div key={i}>{e.content}</div>
                     ))}
                   </div>
                 )}
-                {error && (<div>caught error</div>)}
+{error && (
+  <div className="text-red-500">
+    <pre>{error.message}</pre>
+  </div>
+)}
+
+
               </ScrollArea>
             </CardContent>
             <CardFooter>
