@@ -14,6 +14,7 @@ import { useChat } from "@ai-sdk/react";
 import { motion } from "framer-motion";
 import { ArrowDownCircleIcon, LoaderCircle, MessageCircle, Send } from "lucide-react";
 import React, { useState } from "react";
+import ReactMarkdown from 'react-markdown'
 
 const Home = () => {
   const [chat, Setchat] = useState<boolean>(true);
@@ -58,7 +59,7 @@ const Home = () => {
                 ) : (
                   <div>
                     {messages.map((e, i) => (
-                      <div key={i}>{e.content}</div>
+                      <ReactMarkdown key={i}>{e.content}</ReactMarkdown>
                     ))}
                   </div>
                 )}

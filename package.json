@@ -2,7 +2,7 @@
   "name": "vedai",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -25,6 +25,7 @@
     "node-fetch": "^3.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
     "shadcn": "^2.8.0",
     "tailwind-merge": "^3.3.1"
   },
