@@ -4,7 +4,6 @@ import { streamText,Message } from "ai";
 
 const google = createGoogleGenerativeAI({
   apiKey:process.env.GOOGLE_API_KEY
-,
 });
 
 export const runtime = "edge";
