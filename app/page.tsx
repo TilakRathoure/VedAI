@@ -17,7 +17,7 @@ import React, { useState } from "react";
 import ReactMarkdown from 'react-markdown'
 
 const Home = () => {
-  const [chat, Setchat] = useState<boolean>(true);
+  const [chat, Setchat] = useState<boolean>(false);
   const {
     messages,
     input,
@@ -51,15 +51,20 @@ const Home = () => {
               </Button>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="h-[300px]">
+              <ScrollArea className="h-[300px] pr-2">
                 {messages.length === 0 ? (
                   <div className="h-[300px] flex justify-center items-center font-light">
                     No Messages.
                   </div>
                 ) : (
-                  <div>
+                  <div className={`flex flex-col gap-5`}>
                     {messages.map((e, i) => (
-                      <ReactMarkdown key={i}>{e.content}</ReactMarkdown>
+
+                      <div key={i} className={`bg-black text-white px-4 p-2 rounded-2xl ${e.role!=="user"? "self-start" :"self-end"}`}>
+
+                      <ReactMarkdown >{e.content}</ReactMarkdown>
+
+                      </div>
                     ))}
                   </div>
                 )}
@@ -86,7 +91,7 @@ const Home = () => {
                   onClick={()=>{if(isLoading){stop()}}}
                   size="icon"
                 >
-                  {!isLoading? (<Send/>) : (<LoaderCircle/>)}
+                  {!isLoading? (<Send/>) : (<LoaderCircle className="animate-spin"/>)}
                 </Button>
               </form>
             </CardFooter>
