@@ -51,16 +51,16 @@ const Home = () => {
               </Button>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="h-[300px]">
+              <ScrollArea className="h-[300px] pr-2">
                 {messages.length === 0 ? (
                   <div className="h-[300px] flex justify-center items-center font-light">
                     No Messages.
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-5">
+                  <div className={`flex flex-col gap-5`}>
                     {messages.map((e, i) => (
 
-                      <div key={i} className="bg-black text-white px-4 p-2 rounded-2xl">
+                      <div key={i} className={`bg-black text-white px-4 p-2 rounded-2xl ${e.role!=="user"? "self-start" :"self-end"}`}>
 
                       <ReactMarkdown >{e.content}</ReactMarkdown>
 
