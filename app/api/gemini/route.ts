@@ -23,7 +23,7 @@ const buildgoogle = (messages: Message[]): Message[] => [
   })),
 ];
 
-export async function POST(request: Request) {
+export const POST=async(request: Request)=>{
   const { messages } = await request.json();
 
   const stream = await streamText({

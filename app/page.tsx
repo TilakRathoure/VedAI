@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChat } from "@ai-sdk/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownCircleIcon, LoaderCircle, MessageCircle, Send } from "lucide-react";
 import React, { useState } from "react";
 import ReactMarkdown from 'react-markdown'
@@ -30,6 +30,8 @@ const Home = () => {
 
   return (
     <div className="md:px-[100px] lg:px-[150px] bg-black h-[100vh] text-white px-15 py-5">
+      <AnimatePresence>
+
       {chat && (
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -60,7 +62,7 @@ const Home = () => {
                   <div className={`flex flex-col gap-5`}>
                     {messages.map((e, i) => (
 
-                      <div key={i} className={`bg-black text-white px-4 p-2 rounded-2xl ${e.role!=="user"? "self-start" :"self-end"}`}>
+                      <div key={i} className={` text-white px-4 p-2 rounded-2xl ${e.role!=="user"? "self-start bg-gray-500" :"self-end bg-black"}`}>
 
                       <ReactMarkdown >{e.content}</ReactMarkdown>
 
@@ -99,9 +101,15 @@ const Home = () => {
         </motion.div>
       )}
 
+      </AnimatePresence>
+
+
       <h2 className="flex justify-end scroll-m-20 pb-2 text-3xl font-bold tracking-tight first:mt-0 p-4">
         VedAI.
       </h2>
+      <p className="text-lg font-light my-5 mb-10">
+VedAI is an AI-powered chatbot built using Google&apos;s Gemini 1.5 Flash model and integrated with the Vercel AI SDK for seamless performance. Whether you&apos;re chatting, learning, or exploring, VedAI is here to assist with speed, accuracy, and a growing understanding of the world around you.
+        </p>
 
       <Button
         onClick={() => {
