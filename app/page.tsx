@@ -21,7 +21,7 @@ import {
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import geminiimage from "@/components/Build_with_Gemini_dk_16_9_1.width-1200.format-.jpeg";
+import geminiimage from "@/public/Build_with_Gemini_dk_16_9_1.width-1200.format-.jpeg"
 
 const Home = () => {
   const [chat, setChat] = useState(false);
@@ -42,11 +42,11 @@ const Home = () => {
         alt="gemini"
         src={geminiimage}
         fill
-        className="object-cover z-[-1]"
+        className="object-cover object-top-left z-[-1]"
         priority
       />
 
-      <div className="md:px-[100px] lg:px-[150px] px-6 py-5 bg-black/70 min-h-screen">
+      <div className="md:px-[100px] lg:px-[150px] px-8 py-7 bg-black/70 min-h-screen">
         <AnimatePresence>
           {chat && (
             <motion.div
