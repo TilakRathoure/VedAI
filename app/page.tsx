@@ -46,7 +46,7 @@ const Home = () => {
         priority
       />
 
-      <div className="md:px-[100px] lg:px-[150px] px-8 py-7 bg-black/70 min-h-screen">
+      <div className="md:px-[100px] lg:px-[150px] px-8 py-[100px] bg-black/70 min-h-screen">
         <AnimatePresence>
           {chat && (
             <motion.div
