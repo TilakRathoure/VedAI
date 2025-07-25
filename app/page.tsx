@@ -21,7 +21,7 @@ import {
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import geminiimage from "@/public/Build_with_Gemini_dk_16_9_1.width-1200.format-.jpeg"
+import geminiimage from "@/public/Build_with_Gemini_dk_16_9_1.width-1200.format-.jpeg";
 
 const Home = () => {
   const [chat, setChat] = useState(false);
@@ -37,16 +37,15 @@ const Home = () => {
   } = useChat({ api: "api/gemini" });
 
   return (
-    <div className="relative text-white min-h-screen">
+    <div className="relative text-white min-h-screen bg-black overflow-hidden">
       <Image
         alt="gemini"
         src={geminiimage}
         fill
-        className="object-cover object-top-left z-[-1]"
+        className="translate-y-35 md:translate-25 translate-x-10 object-contain opacity-60 z-0"
         priority
       />
-
-      <div className="md:px-[100px] lg:px-[150px] px-8 py-[100px] bg-black/70 min-h-screen">
+      <div className="relative z-10 md:px-[100px] lg:px-[150px] px-8 py-[100px] min-h-screen">
         <AnimatePresence>
           {chat && (
             <motion.div
@@ -54,7 +53,7 @@ const Home = () => {
               transition={{ duration: 0.2 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="fixed right-6 md:right-[100px] lg:right-[150px] top-25 z-10"
+              className="fixed right-6 md:right-[100px] lg:right-[150px] top-25 z-20"
             >
               <Card className="w-[60vw] max-w-[500px]">
                 <CardHeader className="flex justify-between">
@@ -111,7 +110,11 @@ const Home = () => {
                       }}
                       size="icon"
                     >
-                      {!isLoading ? <Send /> : <LoaderCircle className="animate-spin" />}
+                      {!isLoading ? (
+                        <Send />
+                      ) : (
+                        <LoaderCircle className="animate-spin" />
+                      )}
                     </Button>
                   </form>
                 </CardFooter>
@@ -126,16 +129,13 @@ const Home = () => {
 
         <p className="text-lg font-light my-5 mb-10">
           VedAI is an AI-powered chatbot built using Google&apos;s Gemini 1.5 Flash model
-          and integrated with the Vercel AI SDK for seamless performance. Whether
-          you&apos;re chatting, learning, or exploring, VedAI is here to assist with speed,
-          accuracy, and a growing understanding of the world around you.
+          and integrated with the Vercel AI SDK for seamless performance.
+          Whether you&apos;re chatting, learning, or exploring, VedAI is here to assist
+          with speed, accuracy, and a growing understanding of the world around
+          you.
         </p>
 
-        <Button
-          onClick={() => setChat(!chat)}
-          size="lg"
-          variant="secondary"
-        >
+        <Button onClick={() => setChat(!chat)} size="lg" variant="secondary">
           VedAI {chat ? <ArrowDownCircleIcon /> : <MessageCircle />}
         </Button>
       </div>
