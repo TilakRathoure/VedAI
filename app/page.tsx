@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useChat } from "@ai-sdk/react";
+import { Message, useChat } from "@ai-sdk/react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowDownCircleIcon,
@@ -35,6 +35,8 @@ const Home = () => {
     stop,
     error,
   } = useChat({ api: "api/gemini" });
+
+  const firstmessage: Message[]=[{id:"453363", role:"assistant",content:"Hi, how can i help you?"},...messages];
 
   return (
     <div className="relative text-white min-h-screen bg-black overflow-hidden">
@@ -67,26 +69,20 @@ const Home = () => {
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-[300px] pr-2">
-                    {messages.length === 0 ? (
-                      <div className="h-[300px] flex justify-center items-center font-light">
-                        No Messages.
-                      </div>
-                    ) : (
-                      <div className="flex flex-col gap-5">
-                        {messages.map((e, i) => (
-                          <div
-                            key={i}
-                            className={`text-white px-4 p-2 rounded-2xl ${
-                              e.role !== "user"
-                                ? "self-start bg-gray-500"
-                                : "self-end bg-black"
-                            }`}
-                          >
-                            <ReactMarkdown>{e.content}</ReactMarkdown>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <div className="flex flex-col gap-5">
+                      {firstmessage.map((e, i) => (
+                        <div
+                          key={i}
+                          className={`text-white px-4 p-2 rounded-2xl ${
+                            e.role !== "user"
+                              ? "self-start bg-gray-500"
+                              : "self-end bg-black"
+                          }`}
+                        >
+                          <ReactMarkdown>{e.content}</ReactMarkdown>
+                        </div>
+                      ))}
+                    </div>
                     {error && (
                       <div className="text-red-500">
                         <pre>{error.message}</pre>
@@ -128,11 +124,11 @@ const Home = () => {
         </h2>
 
         <p className="text-lg font-light my-5 mb-10">
-          VedAI is an AI-powered chatbot built using Google&apos;s Gemini 1.5 Flash model
-          and integrated with the Vercel AI SDK for seamless performance.
-          Whether you&apos;re chatting, learning, or exploring, VedAI is here to assist
-          with speed, accuracy, and a growing understanding of the world around
-          you.
+          VedAI is an AI-powered chatbot built using Google&apos;s Gemini 1.5
+          Flash model and integrated with the Vercel AI SDK for seamless
+          performance. Whether you&apos;re chatting, learning, or exploring,
+          VedAI is here to assist with speed, accuracy, and a growing
+          understanding of the world around you.
         </p>
 
         <Button onClick={() => setChat(!chat)} size="lg" variant="secondary">
