@@ -4,8 +4,8 @@ VedAI is an AI-powered chatbot built using Google's Gemini 1.5 Flash model and i
 
 ---
 
-<img width="500" height="642" alt="Screenshot 2025-07-25 120453" src="https://github.com/user-attachments/assets/ace8a919-2c76-4979-81fe-1d99872c326e" />
-<img width="500" height="758" alt="Screenshot 2025-07-25 121022" src="https://github.com/user-attachments/assets/b97f3403-0742-43e9-9d61-0629f3f25b02" />
+<img width="470" height="642" alt="Screenshot 2025-07-25 120453" src="https://github.com/user-attachments/assets/ace8a919-2c76-4979-81fe-1d99872c326e" />
+<img width="470" height="758" alt="Screenshot 2025-07-25 121022" src="https://github.com/user-attachments/assets/b97f3403-0742-43e9-9d61-0629f3f25b02" />
 
 ---
 
