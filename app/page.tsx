@@ -22,6 +22,7 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import geminiimage from "@/public/Build_with_Gemini_dk_16_9_1.width-1200.format-.jpeg";
+import { FaSquareGithub } from "react-icons/fa6";
 
 const Home = () => {
   const [chat, setChat] = useState(false);
@@ -36,7 +37,10 @@ const Home = () => {
     error,
   } = useChat({ api: "api/gemini" });
 
-  const firstmessage: Message[]=[{id:"453363", role:"assistant",content:"Hi, how can i help you?"},...messages];
+  const firstmessage: Message[] = [
+    { id: "453363", role: "assistant", content: "Hi, how can i help you?" },
+    ...messages,
+  ];
 
   return (
     <div className="relative text-white min-h-screen bg-black overflow-hidden">
@@ -130,10 +134,24 @@ const Home = () => {
           VedAI is here to assist with speed, accuracy, and a growing
           understanding of the world around you.
         </p>
-
-        <Button onClick={() => setChat(!chat)} size="lg" variant="secondary">
-          VedAI {chat ? <ArrowDownCircleIcon /> : <MessageCircle />}
-        </Button>
+        <div className="w-full flex justify-around">
+          <Button
+            onClick={() => setChat(!chat)}
+            className="w-[100px] h-[45px]"
+            variant="secondary"
+          >
+            VedAI {chat ? <ArrowDownCircleIcon /> : <MessageCircle />}
+          </Button>
+          <a href="https://github.com/TilakRathoure/VedAI" target="_blank">
+            <Button
+              className="bg-black border-1 w-[100px] h-[45px] border-white text-white"
+              variant={"outline"}
+            >
+              <FaSquareGithub size={40} className="text-white " />
+              GitHub
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
   );
